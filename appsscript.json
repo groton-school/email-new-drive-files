@@ -1,0 +1,26 @@
+{
+  "timeZone": "America/New_York",
+  "dependencies": {},
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "addOns": {
+    "common": {
+      "name": "Email New Drive Files",
+      "logoUrl": "https://drive.google.com/uc?id=171k9jR5rZXrFuFq1c4_CIH2H2XotNJuh",
+      "homepageTrigger": {
+        "runFunction": "onHomepage"
+      }
+    },
+    "drive": {
+      "onItemsSelectedTrigger": {
+        "runFunction": "onItemsSelected"
+      }
+    }
+  },
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/drive.readonly",
+    "https://www.googleapis.com/auth/drive.addons.metadata.readonly",
+    "https://www.googleapis.com/auth/script.scriptapp",
+    "https://mail.google.com/"
+  ]
+}
