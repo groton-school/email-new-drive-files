@@ -48,6 +48,9 @@ global.onHomepage = (e) => {
   folders.forEach(
     (widget) => (foldersSection = foldersSection.addWidget(widget))
   );
+  if (!folders.length) {
+    foldersSection.addWidget(g.CardService.Widget.newTextParagraph("None"));
+  }
 
   let statsSection = CardService.newCardSection().setHeader("Activity");
   stats.forEach(
