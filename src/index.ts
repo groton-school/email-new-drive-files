@@ -35,6 +35,12 @@ global.onHomepage = (e) => {
     g.PropertiesService.deleteUserProperty(LAST_CHECK);
   }
 
+  const title = CardService.newCardSection().addWidget(
+    CardService.newImage().setImageUrl(
+      'https://groton-school.github.io/email-new-drive-files/store/card-banner-assets/cardservice-header.png'
+    )
+  );
+
   const folders = getFolderIds().map((folder) =>
     g.CardService.Widget.newTextButton({
       text: DriveApp.getFolderById(folder).getName(),
@@ -63,9 +69,8 @@ global.onHomepage = (e) => {
   );
 
   return g.CardService.Card.create({
-    header: 'Email New Drive Files',
-    widgets: ['Select a Drive folder at left to monitor for new files.'],
-    sections: [foldersSection, statsSection]
+    widgets: [, 'Select a Drive folder at left to monitor for new files.'],
+    sections: [title, foldersSection, statsSection]
   });
 };
 

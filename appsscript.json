@@ -6,7 +6,7 @@
   "addOns": {
     "common": {
       "name": "Email New Drive Files",
-      "logoUrl": "https://drive.google.com/uc?id=171k9jR5rZXrFuFq1c4_CIH2H2XotNJuh",
+      "logoUrl": "https://groton-school.github.io/email-new-drive-files/store/icon-assets/icon-128px.png",
       "homepageTrigger": {
         "runFunction": "onHomepage"
       }
