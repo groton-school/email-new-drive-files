@@ -102,12 +102,16 @@ global.onHomepage = () => {
   });
 };
 
-global.view = (e) => {
+global.view = (e: GoogleAppsScript.Addons.CommonEventObject) => {
   const folder = DriveApp.getFolderById(e.parameters.folder);
   return folderList([{ id: folder.getId(), title: folder.getName() }]);
 };
 
-global.onItemsSelected = (e) => {
+global.onItemsSelected = (
+  e: GoogleAppsScript.Events.AppsScriptEvent & {
+    drive: GoogleAppsScript.Addons.DriveEventObject;
+  }
+) => {
   const folders = e.drive.selectedItems.filter(
     (item) => item.mimeType === 'application/vnd.google-apps.folder' // TODO MimeType.FOLDER won't compile
   );
@@ -117,7 +121,7 @@ global.onItemsSelected = (e) => {
   return global.home();
 };
 
-function folderList(folders) {
+function folderList(folders: GoogleAppsScript.Drive.Schema.File[]) {
   return g.CardService.Card.create({
     sections: folders.map((folder) => {
       const saved = g.PropertiesService.getUserProperty(folder.id);
@@ -176,7 +180,7 @@ global.home = () => {
     .updateCard(global.onHomepage());
 };
 
-global.remove = (e) => {
+global.remove = (e: GoogleAppsScript.Addons.CommonEventObject) => {
   g.PropertiesService.deleteUserProperty(e.parameters.folder);
   return g.CardService.Card.create({
     header: 'Removed',
@@ -186,7 +190,11 @@ global.remove = (e) => {
   });
 };
 
-global.save = (e) => {
+global.save = (
+  e: GoogleAppsScript.Events.AppsScriptEvent & {
+    commonEventObject: GoogleAppsScript.Addons.CommonEventObject;
+  }
+) => {
   const folders = {};
   Object.keys(e.commonEventObject.formInputs).forEach((key) => {
     const [id, field] = key.split('/');
