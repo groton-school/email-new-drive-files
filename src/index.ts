@@ -1,5 +1,5 @@
-import g from '@battis/gas-lighter';
 import pkg from '../package.json';
+import g from '@battis/gas-lighter';
 
 type FolderConfig = {
   email: string;
@@ -37,7 +37,7 @@ function getFolderIds() {
     .filter((key) => PROPERTIES.indexOf(key) === -1);
 }
 
-global.onHomepage = (e) => {
+global.onHomepage = () => {
   const stats = [];
   const hasTrigger = !!g.PropertiesService.getUserProperty(TRIGGER);
   let triggerVersion = g.PropertiesService.getUserProperty(TRIGGER_VERSION);
@@ -261,7 +261,12 @@ function resetTriggerToCurrentAddOnVersion() {
   return pkg.version;
 }
 
-function safeSend(email, subject, body, attachments) {
+function safeSend(
+  email: string,
+  subject: string,
+  body: string,
+  attachments: GoogleAppsScript.Base.BlobSource[]
+) {
   try {
     GmailApp.sendEmail(email, subject, body, { attachments });
     return true;
@@ -311,14 +316,18 @@ global.hourly = () => {
             attachments.push(file.getBlob()); // fall back to native type
           }
         }
-        if (config.separate) {
+        if ((fileSummary.sent = config.separate)) {
           lastCheckSummary.attempted++;
-          fileSummary.sent = safeSend(
-            config.email,
-            `${file.getName()} added to ${folder.getName()}`,
-            summary,
-            attachments
-          );
+          if (
+            safeSend(
+              config.email,
+              `${file.getName()} added to ${folder.getName()}`,
+              summary,
+              attachments
+            )
+          ) {
+            lastCheckSummary.sent++;
+          }
           if (attachments) {
             attachments = [];
           }
@@ -327,19 +336,19 @@ global.hourly = () => {
         }
         folderSummary.files.push(fileSummary);
       }
-      if (summaries.length) {
-        lastCheckSummary.attempted++;
-        if (
-          safeSend(
-            config.email,
-            `Files added to ${folder.getName}`,
-            summaries.join('\n\n'),
-            attachments
-          )
-        ) {
-          folderSummary.files.forEach((f) => (f.sent = true));
-          lastCheckSummary.sent++;
-        }
+    }
+    if (summaries.length) {
+      lastCheckSummary.attempted++;
+      if (
+        safeSend(
+          config.email,
+          `Files added to ${folder.getName()}`,
+          summaries.join('\n\n'),
+          attachments
+        )
+      ) {
+        folderSummary.files.forEach((f) => (f.sent = true));
+        lastCheckSummary.sent++;
       }
     }
     lastCheckSummary.folders.push(folderSummary);
