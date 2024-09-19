@@ -1,6 +1,6 @@
 {
   "name": "@groton/email-new-drive-files",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Google Drive Add-on to monitor folders for new files and email notifications",
   "license": "GPL-3.0",
   "author": {
