@@ -1,5 +1,5 @@
-import pkg from '../package.json';
 import g from '@battis/gas-lighter';
+import pkg from '../package.json';
 
 type FolderConfig = {
   email: string;

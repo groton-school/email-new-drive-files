@@ -1,13 +1,13 @@
 {
-  "actions" : {
-    "build" : {
-      "enabled" : true,
-      "script" : "npm run build"
+  "actions": {
+    "build": {
+      "enabled": true,
+      "script": "npm run build"
     },
-    "run" : {
-      "enabled" : true,
-      "script" : "npm run deploy"
+    "run": {
+      "enabled": true,
+      "script": "npm run deploy"
     }
   },
-  "openLogOnRun" : "start"
+  "openLogOnRun": "start"
 }
