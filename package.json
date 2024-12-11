@@ -18,7 +18,7 @@
     "extends": "@battis/gas-lighter/.eslintrc.json"
   },
   "dependencies": {
-    "@battis/gas-lighter": "^0.4.4"
+    "@battis/gas-lighter": "^0.5.2"
   },
   "devDependencies": {
     "@battis/prettier-config": "latest",
