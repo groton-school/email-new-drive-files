@@ -14,7 +14,7 @@ importers:
     devDependencies:
       '@battis/prettier-config':
         specifier: latest
-        version: 1.5.5(typescript@4.9.5)
+        version: 1.5.6(typescript@4.9.5)
       '@changesets/cli':
         specifier: ^2.27.11
         version: 2.27.11
@@ -96,8 +96,8 @@ packages:
     resolution: {integrity: sha512-3om0sfgttwqLs7sW+pu07VQy9EBZMMFYZVZ1diSC5DmGUp91q6AqH2XT6jeMkh3NgfoKGHbZvyzkVax3C7pO8A==}
     engines: {node: '>=12.17'}
 
-  '@battis/prettier-config@1.5.5':
-    resolution: {integrity: sha512-g+1W+5Tjmeo0U7vWu0JCl8EYsuUV8StaUSkby66bN6VzWv21HpZYtSzV4MgzLSiRvXEuKAGGUN98kh1MXSjwGQ==}
+  '@battis/prettier-config@1.5.6':
+    resolution: {integrity: sha512-YplRYmOlg49D50kCIO3AemjEmtLif1YZcM01TH0Skgp46IggDcUGZr4BkllUvMFRIlgVPOSPm3po/b/z3ohiuA==}
     engines: {node: '>=12.17'}
 
   '@battis/typescript-tricks@0.5.6':
@@ -2420,7 +2420,7 @@ snapshots:
 
   '@babel/generator@7.17.7':
     dependencies:
-      '@babel/types': 7.17.0
+      '@babel/types': 7.25.6
       jsesc: 2.5.2
       source-map: 0.5.7
 
@@ -2525,7 +2525,7 @@ snapshots:
       - webpack-bundle-analyzer
       - webpack-dev-server
 
-  '@battis/prettier-config@1.5.5(typescript@4.9.5)':
+  '@battis/prettier-config@1.5.6(typescript@4.9.5)':
     dependencies:
       '@prettier/plugin-xml': 2.2.0
       '@trivago/prettier-plugin-sort-imports': 4.3.0(prettier@3.4.2)
