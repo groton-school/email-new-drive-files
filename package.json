@@ -23,7 +23,7 @@
     "@battis/gas-lighter": "^0.5.2"
   },
   "devDependencies": {
-    "@battis/prettier-config": "^1.6.4",
+    "@battis/prettier-config": "^1.7.1",
     "clasp": "^1.0.0",
     "commit-and-tag-version": "^12.5.1",
     "del-cli": "^6.0.0",
